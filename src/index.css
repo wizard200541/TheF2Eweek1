@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: 'cubic-11';
+  src:  url('./assets/Cubic_11_1.013_R.woff2') format('woff2'),
+        url('./assets/Cubic_11_1.013_R.woff') format('woff'),
+        url('./assets/Cubic_11_1.013_R.ttf') format('truetype');
+}
+
+:root {
+  font-family: 'cubic-11', 微軟正黑體, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
