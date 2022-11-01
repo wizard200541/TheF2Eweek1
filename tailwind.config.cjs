@@ -1,12 +1,22 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors');
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    colors: {
+      ...colors,
+      primary: '#B82A06',
+      secondary: '#3C0C00',
+      tertiary: '#FFB3A4',
+      lightgrey: '#DCDCDC',
+    },
     extend: {
       animation: {
         type: 'type 3s ease-out .8s infinite alternate both',
+        blink: 'blink .7s infinite',
       },
       keyframes: {
         type: {
@@ -22,6 +32,10 @@ module.exports = {
           '85%, 90%': { transform: 'translateX(143px)' },
           '95%, 100%': { transform: 'translateX(154px)' },
         },
+        blink: {
+          '0%': { color: '#FFF'},
+          '100%': { color: '#B82A06'},
+        }
       },
     },
   },

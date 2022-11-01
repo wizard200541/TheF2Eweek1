@@ -1,11 +1,16 @@
-import { useState } from 'react'
 import LoadingPage from './components/loading-page'
+import LandingPage from './components/landing-page'
 import './App.css'
 
 function App() {
-
+  const isLoading = false;
+  if (isLoading) {
+    return <LoadingPage/>
+  }
   return (
-    <LoadingPage/>
+    <div>
+      <LandingPage/>
+    </div>
   )
 }
 
