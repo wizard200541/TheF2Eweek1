@@ -1,3 +1,4 @@
+import { Parallax, ParallaxLayer } from '@react-spring/parallax'
 import LoadingPage from './components/loading-page'
 import MainSection from './components/main-section'
 import IntroSection from './components/intro-section'
@@ -9,10 +10,10 @@ function App() {
     return <LoadingPage/>
   }
   return (
-    <div>
+    <Parallax pages={4} className="top-0 left-0 bg-black">
       <MainSection/>
       <IntroSection/>
-    </div>
+    </Parallax>
   )
 }
 

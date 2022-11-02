@@ -7,6 +7,16 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+    screens: {
+      'sm': '768px',
+      // => @media (min-width: 768px) { ... }
+
+      'md': '1440px',
+      // => @media (min-width: 1440px) { ... }
+
+      'lg': '1920px',
+      // => @media (min-width: 1920px) { ... }
+    },
     colors: {
       ...colors,
       primary: '#B82A06',
@@ -17,7 +27,8 @@ module.exports = {
     extend: {
       animation: {
         type: 'type 3s ease-out .8s infinite alternate both',
-        blink: 'blink .7s infinite',
+        typing: 'typing 3.7s steps(10, start) infinite both',
+        blink: 'blink .75s step-end infinite',
       },
       keyframes: {
         type: {
@@ -33,9 +44,13 @@ module.exports = {
           '85%, 90%': { transform: 'translateX(143px)' },
           '95%, 100%': { transform: 'translateX(154px)' },
         },
+        typing: {
+          'from': { width: '0' },
+          'to': { width: '150px' },
+        },
         blink: {
-          '0%': { color: '#FFF'},
-          '100%': { color: '#B82A06'},
+          'from, to': { color: '#FFF'},
+          '50%': { color: '#B82A06'},
         }
       },
     },
@@ -43,6 +58,11 @@ module.exports = {
   plugins: [
     plugin(function ({ addUtilities }) {
       const newUtilities = {
+        '.text-typing': {
+          overflow: 'hidden',
+          whiteSpace: 'nowrap',
+          margin: '0 auto',
+        },
         '.text-stroke': {
           '-webkit-text-stroke': '1px black',
         },
