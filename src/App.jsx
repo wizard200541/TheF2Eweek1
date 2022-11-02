@@ -1,5 +1,6 @@
 import LoadingPage from './components/loading-page'
-import LandingPage from './components/landing-page'
+import MainSection from './components/main-section'
+import IntroSection from './components/intro-section'
 import './App.css'
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
   }
   return (
     <div>
-      <LandingPage/>
+      <MainSection/>
+      <IntroSection/>
     </div>
   )
 }

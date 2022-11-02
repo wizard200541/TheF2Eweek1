@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   content: [
@@ -39,5 +40,15 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-stroke': {
+          '-webkit-text-stroke': '1px black',
+        },
+      };
+
+      addUtilities(newUtilities);
+    }),
+  ],
 }

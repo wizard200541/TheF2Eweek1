@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSpring, animated, config } from '@react-spring/web'
+import { useSpring, animated } from '@react-spring/web'
 import Section from '../section'
 import { ReactComponent as BrandLogo } from '@/assets/brand-logo.svg';
 import { ReactComponent as BannerLogo } from '@/assets/banner-logo.svg';
@@ -65,7 +65,7 @@ const LoginAction = ({ children, selected, ...rest}) => {
   )
 }
 
-const LandingPage = () => {
+const MainSection = () => {
   const [selected, setSelected] = useState(null)
   const springs = useSpring({
     config: {
@@ -141,4 +141,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
+export default MainSection
