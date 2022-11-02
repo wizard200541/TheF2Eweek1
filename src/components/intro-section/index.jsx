@@ -5,6 +5,8 @@ import { ReactComponent as SeniorSoldier } from '@/assets/senior-soldier.svg';
 import { ReactComponent as SeniorSoldierDialog } from '@/assets/senior-soldier-dialog.svg';
 import { ReactComponent as JuniorSoldier } from '@/assets/junior-soldier.svg';
 import { ReactComponent as Tree } from '@/assets/tree.svg';
+import windowPic from '@/assets/window.gif';
+import tankRightPic from '@/assets/tank-right.gif';
 import Section from '../section'
 
 const IntroItem = ({ children, alignRight }) => {
@@ -21,8 +23,8 @@ const IntroSection = () => {
   return (
     <Section className="bg-black relative overflow-hidden pt-[124.5px] pb-[328.5px] text-[36px]">
       <IntroItem>
-        <img className="absolute" src={'src/assets/window.gif'} width={637} height={429}/>
-        <img className="absolute" src={'src/assets/tank-right.gif'} width={336} height={135}/>
+        <img className="absolute" src={windowPic} width={637} height={429}/>
+        <img className="absolute" src={tankRightPic} width={336} height={135}/>
         <div className="absolute right-[9px] top-[-35px]">
           <TankDialog />
           <div className="absolute left-1/2 -translate-x-1/2 top-[30px]">I'm cool !</div>
