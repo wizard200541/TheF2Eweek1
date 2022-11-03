@@ -13,7 +13,7 @@ import Section from '../section'
 
 const IntroItem = forwardRef(({ children, alignRight }, ref) => {
   return (
-    <div ref={ref} className={`h-[813px] flex items-end ${alignRight ? 'justify-end' : 'justify-start' }`}>
+    <div ref={ref} className={`h-[813px] w-full flex items-end ${alignRight ? 'justify-end' : 'justify-start' }`}>
       <div className="h-[570px] lg:w-[calc(100%-940px)] w-[980px] bg-primary relative">
         {children}
       </div>
@@ -27,8 +27,6 @@ const IntroSection = () => {
       if (inView) {
         seniorSoldierDialogSpringRef.start({ scale: 0, immediate: true });
         seniorSoldierSpringRef.start();
-      } else {
-        setShowSoldierDialogText(false);
       }
     },
   });
@@ -63,7 +61,7 @@ const IntroSection = () => {
       scale: 1,
     },
     reset: true,
-    onRest: () => setShowSoldierDialogText(true),
+    onRest: (result) => setShowSoldierDialogText(Boolean(result.value.scale)),
   })
 
   const { ref: treeRef } = useInView({
@@ -82,11 +80,11 @@ const IntroSection = () => {
     },
     from: {
       y: 480,
-      x: 150,
+      x: 200,
     },
     to: {
       y: -94,
-      x: 100,
+      x: 130,
     },
     reset: true,
     onRest: () => juniorSoldierSpringRef.start(),
@@ -99,11 +97,11 @@ const IntroSection = () => {
     },
     from: {
       y: 570,
-      x: 150,
+      x: 200,
     },
     to: {
       y: 334,
-      x: 170,
+      x: 300,
     },
     reset: true,
   })
@@ -119,11 +117,11 @@ const IntroSection = () => {
           </div>
         </IntroItem>
       </ParallaxLayer>
-      <ParallaxLayer offset={1.6} speed={1} className="relative text-[36px] leading-[36px]">
-        <div className="absolute text-white text-stroke right-[250px] z-30">羨慕別人的酷酷網頁動畫...</div>
+      <ParallaxLayer offset={1.6} speed={1.5} className="relative text-[36px] leading-[36px]">
+        <div className="absolute text-white text-stroke left-[50%] whitespace-nowrap z-30">羨慕別人的酷酷網頁動畫...</div>
       </ParallaxLayer>
-      <ParallaxLayer offset={2} speed={0.4} className="relative flex items-end justify-end overflow-hidden text-[36px] leading-[36px]">
-        <IntroItem ref={seniorSoldierRef}>
+      <ParallaxLayer offset={2} speed={0.4} className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
+        <IntroItem alignRight ref={seniorSoldierRef}>
           <animated.div
             style={{
               position: 'absolute',
@@ -146,8 +144,8 @@ const IntroSection = () => {
           </animated.div>
         </IntroItem>
       </ParallaxLayer>
-      <ParallaxLayer offset={2.8} speed={1} className="relative text-[36px] leading-[36px]">
-        <div className="absolute text-white text-stroke left-[285px] z-30">滿足不了同事的許願...</div>
+      <ParallaxLayer offset={2.8} speed={1.5} className="relative text-[36px] leading-[36px]">
+        <div className="absolute text-white text-stroke right-[50%] whitespace-nowrap z-30">滿足不了同事的許願...</div>
       </ParallaxLayer>
       <ParallaxLayer offset={3} speed={0.4} className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
         <IntroItem ref={treeRef}>
@@ -169,8 +167,8 @@ const IntroSection = () => {
           </animated.div>
         </IntroItem>
       </ParallaxLayer>
-      <ParallaxLayer offset={3.8} speed={1} className="relative overflow-hidden text-[36px] leading-[36px]">
-        <div className="absolute text-white text-stroke right-[250px] z-30">動畫技能樹太雜無從下手...</div>
+      <ParallaxLayer offset={3.8} speed={1.5} className="relative overflow-hidden text-[36px] leading-[36px]">
+        <div className="absolute text-white text-stroke left-[50%] whitespace-nowrap z-30">動畫技能樹太雜無從下手...</div>
       </ParallaxLayer>
     </Fragment>
   )
