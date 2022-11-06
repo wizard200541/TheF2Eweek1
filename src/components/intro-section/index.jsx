@@ -1,6 +1,5 @@
 import { useState, forwardRef } from 'react'
 import { useSpring, animated, useSpringRef } from '@react-spring/web';
-import { ParallaxLayer } from '@react-spring/parallax'
 import { useInView } from 'react-intersection-observer';
 import { ReactComponent as TankDialog } from '@/assets/tank-dialog.svg';
 import { ReactComponent as SeniorSoldier } from '@/assets/senior-soldier.svg';
@@ -57,7 +56,7 @@ const Layer1 = () => {
   })
   return (
     <>
-      <ParallaxLayer offset={1} speed={0.2} className="relative flex items-end text-[36px] leading-[36px]">
+      <div offset={1} speed={0.2} className="relative flex items-end text-[36px] leading-[36px]">
         <IntroItem ref={windowRef}>
           <animated.div
             className="w-full h-full absolute origin-bottom"
@@ -76,10 +75,10 @@ const Layer1 = () => {
             </div>
           </animated.div>
         </IntroItem>
-      </ParallaxLayer>
-      <ParallaxLayer offset={1.8} speed={1.5} className="relative text-[36px] leading-[36px]">
+      </div>
+      <div offset={1.8} speed={1.5} className="relative text-[36px] leading-[36px]">
         <FloatingText className="left-[50%]">羨慕別人的酷酷網頁動畫...</FloatingText>
-      </ParallaxLayer>
+      </div>
     </>
   )
 }
@@ -115,7 +114,7 @@ const Layer2 = () => {
 
   return (
     <>
-      <ParallaxLayer offset={2} speed={0.2} className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
+      <div offset={2} speed={0.2} className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
         <IntroItem alignRight ref={seniorSoldierRef}>
           <animated.div
             className="absolute"
@@ -131,10 +130,10 @@ const Layer2 = () => {
             {showSoldierDialogText && <DialogText className="top-[80px]">!@#$%...</DialogText>}
           </animated.div>
         </IntroItem>
-      </ParallaxLayer>
-      <ParallaxLayer offset={2.8} speed={1.5} className="relative text-[36px] leading-[36px]">
+      </div>
+      <div offset={2.8} speed={1.5} className="relative text-[36px] leading-[36px]">
         <FloatingText className="right-[50%]">滿足不了同事的許願...</FloatingText>
-      </ParallaxLayer>
+      </div>
     </>
   )
 }
@@ -168,7 +167,7 @@ const Layer3 = () => {
 
   return (
     <>
-      <ParallaxLayer offset={3} speed={0.2} className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
+      <div offset={3} speed={0.2} className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
         <IntroItem ref={treeRef}>
           <animated.div
             className="absolute right-0"
@@ -183,15 +182,15 @@ const Layer3 = () => {
             <JuniorSoldier />
           </animated.div>
         </IntroItem>
-      </ParallaxLayer>
-      <ParallaxLayer offset={3.8} speed={1.5} className="relative overflow-hidden text-[36px] leading-[36px]">
+      </div>
+      <div offset={3.8} speed={1.5} className="relative overflow-hidden text-[36px] leading-[36px]">
         <FloatingText className="left-[50%]">動畫技能樹太雜無從下手...</FloatingText>
-      </ParallaxLayer>
+      </div>
     </>
   )
 }
 
-const IntroSection = ({ scrollElement }) => {
+const IntroSection = () => {
   return (
     <>
       <Layer1/>

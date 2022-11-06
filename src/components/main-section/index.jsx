@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
-import { ParallaxLayer } from '@react-spring/parallax'
 import Section from '../section'
 import { ReactComponent as BrandLogo } from '@/assets/brand-logo.svg';
 import { ReactComponent as BannerLogo } from '@/assets/banner-logo.svg';
@@ -20,8 +19,8 @@ const Navigation = ({ navItems }) => {
   return (
     <div className="flex gap-[30px]">
       {
-        navItems.map((nav) => {
-          return <a href={nav.path}>{nav.name}</a>
+        navItems.map((nav, idx) => {
+          return <a key={`nav_${idx}`} href={nav.path}>{nav.name}</a>
         })
       }
     </div>
@@ -85,62 +84,60 @@ const MainSection = () => {
   }
 
   return (
-    <ParallaxLayer offset={0} speed={0.4}>
-      <Section className="bg-black relative overflow-hidden">
-        <Header>
-          <BrandLogo/>
-          <Navigation
-            navItems={[
-              {
-                name: '關卡資訊',
-                path: '/',
-              },
-              {
-                name: '攻略資源',
-                path: '/',
-              },
-              {
-                name: '求職專區',
-                path: '/',
-              },
-            ]}
-          />
-          <ButtonGroup>
-            <Button>註冊報名</Button>
-            <Button>登入</Button>
-          </ButtonGroup>
-        </Header>
-        <animated.div style={springs}>
-          <SubHeader>
-            <div>I-&nbsp;&nbsp;&nbsp;00</div>
-            <div>HI- 99999</div>
-            <div>Hex School</div>
-          </SubHeader>
-          <Content>
-            <BannerLogo className="my-[89px]"/>
-            <div className="my-[24px] text-[42px] flex flex-col gap-6">
-              <LoginAction
-                data-action="1"
-                selected={selected === '1'}
-                onMouseEnter={onMouseHover}
-              >
-                1&nbsp;LOG IN
-              </LoginAction>
-              <LoginAction
-                data-action="2"
-                selected={selected === '2'}
-                onMouseEnter={onMouseHover}
-              >
-                2&nbsp;SIGN UP
-              </LoginAction>
-            </div>
-            <div className="my-[79px] leading-[42px]">
-              Interactive And Responsive Web Design.
-            </div>
-          </Content>
-        </animated.div>
-      </Section>
-    </ParallaxLayer>
+    <Section className="bg-black relative overflow-hidden">
+      <Header>
+        <BrandLogo/>
+        <Navigation
+          navItems={[
+            {
+              name: '關卡資訊',
+              path: '/',
+            },
+            {
+              name: '攻略資源',
+              path: '/',
+            },
+            {
+              name: '求職專區',
+              path: '/',
+            },
+          ]}
+        />
+        <ButtonGroup>
+          <Button>註冊報名</Button>
+          <Button>登入</Button>
+        </ButtonGroup>
+      </Header>
+      <animated.div style={springs}>
+        <SubHeader>
+          <div>I-&nbsp;&nbsp;&nbsp;00</div>
+          <div>HI- 99999</div>
+          <div>Hex School</div>
+        </SubHeader>
+        <Content>
+          <BannerLogo className="my-[89px]"/>
+          <div className="my-[24px] text-[42px] flex flex-col gap-6">
+            <LoginAction
+              data-action="1"
+              selected={selected === '1'}
+              onMouseEnter={onMouseHover}
+            >
+              1&nbsp;LOG IN
+            </LoginAction>
+            <LoginAction
+              data-action="2"
+              selected={selected === '2'}
+              onMouseEnter={onMouseHover}
+            >
+              2&nbsp;SIGN UP
+            </LoginAction>
+          </div>
+          <div className="my-[79px] leading-[42px]">
+            Interactive And Responsive Web Design.
+          </div>
+        </Content>
+      </animated.div>
+    </Section>
   )
 }
 
