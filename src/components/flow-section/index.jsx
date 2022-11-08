@@ -36,7 +36,7 @@ const FlowSection = () => {
             截止前可修改報名組別。<br/>
           </div>
         </div>
-        <Button className="!absolute right-0 bottom-0">點我註冊報名</Button>
+        <Button>點我註冊報名</Button>
       </div>
       <div className="relative w-full flex items-end">
         <div className="relative w-[140px] h-[229px] mr-[70px]">

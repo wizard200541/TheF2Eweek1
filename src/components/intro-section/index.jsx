@@ -57,7 +57,7 @@ const Layer1 = () => {
     onRest: (result) => setShowWindowDialogText(Boolean(result.value.scale)),
   })
   return (
-    <>
+    <div className="relative">
       <div className="relative flex items-end text-[36px] leading-[36px]">
         <IntroItem>
           <animated.div
@@ -78,10 +78,10 @@ const Layer1 = () => {
           </animated.div>
         </IntroItem>
       </div>
-      <div ref={textRef} className="relative text-[36px] leading-[36px] parallax h-[36px]" data-depth="10">
-        <FloatingText className="left-[50%]">羨慕別人的酷酷網頁動畫...</FloatingText>
+      <div ref={textRef} className="absolute text-[36px] leading-[36px] parallax h-[36px] right-[35%] bottom-[-10%]" data-depth="15">
+        <FloatingText>羨慕別人的酷酷網頁動畫...</FloatingText>
       </div>
-    </>
+    </div>
   )
 }
 
@@ -115,7 +115,7 @@ const Layer2 = () => {
   })
 
   return (
-    <>
+    <div className="relative">
       <div className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
         <IntroItem alignRight>
           <animated.div
@@ -133,10 +133,10 @@ const Layer2 = () => {
           </animated.div>
         </IntroItem>
       </div>
-      <div ref={textRef} className="relative text-[36px] leading-[36px] parallax h-[36px]" data-depth="10">
-        <FloatingText className="right-[50%]">滿足不了同事的許願...</FloatingText>
+      <div ref={textRef} className="absolute text-[36px] leading-[36px] parallax h-[36px] left-[25%] bottom-[-10%]" data-depth="15">
+        <FloatingText>滿足不了同事的許願...</FloatingText>
       </div>
-    </>
+    </div>
   )
 }
 
@@ -168,7 +168,7 @@ const Layer3 = () => {
   })
 
   return (
-    <>
+    <div className="relative">
       <div className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
         <IntroItem>
           <animated.div
@@ -185,10 +185,10 @@ const Layer3 = () => {
           </animated.div>
         </IntroItem>
       </div>
-      <div ref={textRef} className="relative text-[36px] leading-[36px] parallax h-[36px]" data-depth="10">
-        <FloatingText className="left-[50%]">動畫技能樹太雜無從下手...</FloatingText>
+      <div ref={textRef} className="absolute text-[36px] leading-[36px] parallax h-[36px] right-[35%] bottom-[-10%]" data-depth="15">
+        <FloatingText>動畫技能樹太雜無從下手...</FloatingText>
       </div>
-    </>
+    </div>
   )
 }
 
@@ -199,11 +199,11 @@ const IntroSection = () => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         defaults: {
-          ease: "none"
+          ease: "power3.inOut",
         },
         scrollTrigger: {
           trigger: container.current,
-          start: "top bottom",
+          start: "top center",
           scrub: true,
           end: "bottom top",
         }
@@ -215,7 +215,6 @@ const IntroSection = () => {
 
   useEffect(() => {
     if (tl) {
-      console.log(container.current.querySelectorAll('.parallax'))
       container.current.querySelectorAll('.parallax').forEach(layer => {
         const depth = layer.dataset.depth;
         const movement = -(layer.offsetHeight * depth)

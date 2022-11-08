@@ -48,6 +48,7 @@ const WeekSection = () => {
           scrub: true,
           end: () => "+=" + panelsContainer.current.offsetWidth,
           onUpdate: self => animateTank(self.direction),
+          toggleActions: 'play none none reverse',
         }
       });
       setTl(tl);
@@ -57,22 +58,19 @@ const WeekSection = () => {
 
   useEffect(() => {
     if (tl) {
+      const flagAnimate = (el) => gsap.timeline({ defaults: { ease: "power3.inOut" }}).to(el.querySelector('.F1'), { autoAlpha: 0, duration: 0.1 })
+      .to(el.querySelector('.F2'), { autoAlpha: 1, duration: 0.1 }, '<')
+      .to(el.querySelector('.F2'), { autoAlpha: 0, duration: 0.1 })
+      .to(el.querySelector('.F3'), { autoAlpha: 1, duration: 0.1 }, '<')
+      .to(el.querySelector('.F3'), { autoAlpha: 0, duration: 0.1 })
+      .to(el.querySelector('.F4'), { autoAlpha: 1, duration: 0.1 }, '<')
+
       tl.to(panels.current, { xPercent: -100 })
       .fromTo(tank.current, { x: panels.current[0].offsetWidth / 2 }, { x: panels.current[0].offsetWidth / 2 }, '<')
-      .to(flag1.current.querySelector('.F1'), { autoAlpha: 0 })
-      .to(flag1.current.querySelector('.F2'), { autoAlpha: 1,}, '<')
-      .to(flag1.current.querySelector('.F2'), { autoAlpha: 0,})
-      .to(flag1.current.querySelector('.F3'), { autoAlpha: 1,}, '<')
-      .to(flag1.current.querySelector('.F3'), { autoAlpha: 0,})
-      .to(flag1.current.querySelector('.F4'), { autoAlpha: 1,}, '<')
+      .add(flagAnimate(flag1.current))
       .to(panels.current, { xPercent: -200 })
       .fromTo(tank.current, { x: panels.current[0].offsetWidth / 2 },{ x: panels.current[0].offsetWidth / 2 }, '<')
-      .to(flag2.current.querySelector('.F1'), { autoAlpha: 0 })
-      .to(flag2.current.querySelector('.F2'), { autoAlpha: 1,}, '<')
-      .to(flag2.current.querySelector('.F2'), { autoAlpha: 0,})
-      .to(flag2.current.querySelector('.F3'), { autoAlpha: 1,}, '<')
-      .to(flag2.current.querySelector('.F3'), { autoAlpha: 0,})
-      .to(flag2.current.querySelector('.F4'), { autoAlpha: 1,}, '<')
+      .add(flagAnimate(flag2.current))
     }
   }, [tl])
 
@@ -92,7 +90,7 @@ const WeekSection = () => {
 
   return (
     <div ref={panelsContainer} className="w-[300%] h-[1080px] flex flex-nowrap">
-      <img ref={tank} src={tankRightPic} width={164} height={66} className="absolute bottom-[317px] z-50"/>
+      <img ref={tank} src={tankRightPic} width={164} height={66} className="absolute bottom-[337px] z-50"/>
       <div ref={(e) => createPanelsRefs(e, 0)} className="relative w-full h-full bg-primary">
         <Week1 className="h-full w-auto"/>
         <div className="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center text-white">
