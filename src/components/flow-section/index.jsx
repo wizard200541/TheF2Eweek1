@@ -43,6 +43,7 @@ const FlowSection = () => {
           scrollTrigger: {
             trigger: elm,
             scrub: true,
+            start: "center bottom",
             end: "bottom center",
           }
         }).add(flagAnimate(elm))
@@ -58,8 +59,8 @@ const FlowSection = () => {
 
 
   return (
-    <div ref={container} className="w-full h-[2500px] pt-[300px] pb-[150px] px-[155px] bg-black flex flex-col justify-between items-center text-white text-[24px] leading-[44px]">
-      <div ref={(e) => createFlowsRefs(e, 0)} className="flow relative w-full flex items-end">
+    <div ref={container} className="w-full h-[2500px] pt-[300px] pb-[150px] m-auto bg-black flex flex-col justify-between items-center text-white text-[24px] leading-[44px]">
+      <div ref={(e) => createFlowsRefs(e, 0)} className="flow relative w-[1080px] flex items-end">
         <div className="relative w-[140px] h-[229px] mr-[70px]">
           <img className="F1 absolute z-20" src={F1}></img>
           <img className="F2 absolute z-20 opacity-0" src={F2}></img>
@@ -78,7 +79,7 @@ const FlowSection = () => {
         </div>
         <Button>點我註冊報名</Button>
       </div>
-      <div ref={(e) => createFlowsRefs(e, 1)} className="flow relative w-full flex items-end">
+      <div ref={(e) => createFlowsRefs(e, 1)} className="flow relative w-[1080px] flex items-end">
         <div className="relative w-[140px] h-[229px] mr-[70px]">
           <img className="F1 absolute z-20" src={F1}></img>
           <img className="F2 absolute z-20 opacity-0" src={F2}></img>
@@ -93,7 +94,7 @@ const FlowSection = () => {
           </div>
         </div>
       </div>
-      <div ref={(e) => createFlowsRefs(e, 2)} className="flow relative w-full flex items-end">
+      <div ref={(e) => createFlowsRefs(e, 2)} className="flow relative w-[1080px] flex items-end">
         <div className="relative w-[140px] h-[229px] mr-[70px]">
           <img className="F1 absolute z-20" src={F1}></img>
           <img className="F2 absolute z-20 opacity-0" src={F2}></img>
@@ -108,7 +109,7 @@ const FlowSection = () => {
           </div>
         </div>
       </div>
-      <div ref={(e) => createFlowsRefs(e, 3)} className="flow relative w-full flex items-end">
+      <div ref={(e) => createFlowsRefs(e, 3)} className="flow relative w-[1080px] flex items-end">
         <div className="relative w-[140px] h-[229px] mr-[70px]">
           <img className="F1 absolute z-20" src={F1}></img>
           <img className="F2 absolute z-20 opacity-0" src={F2}></img>

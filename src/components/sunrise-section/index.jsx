@@ -33,6 +33,7 @@ const SunRiseSection = () => {
       tl.to('.ml2', { yPercent: 100, duration: 4 }, '<0.5')
       tl.to('.ml1', { yPercent: 50, duration: 4 }, '<0.5')
       tl.to('.title', { top: "50%", duration: 3 }, '<')
+      tl.to(container.current, { backgroundColor: '#CC4F36' }, '<0.5')
       tl.to('.title', { color: '#FFF', borderColor: '#FFF', duration: 3, onComplete: () => {
         tl.to(".subtitle", { opacity: 1 })
         gsap.fromTo(".subtitle", {text: ''}, {
@@ -41,8 +42,7 @@ const SunRiseSection = () => {
           duration: 3,
         });
       } }, '<0.5')
-      tl.to(container.current, { backgroundColor: '#CC4F36' }, '<')
-      tl.to(container.current, { backgroundColor: '#FFB3A4' }, '>')
+      tl.to(container.current, { backgroundColor: '#FFB3A4' }, '<0.5')
     }
   }, [tl]);
 

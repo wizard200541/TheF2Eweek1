@@ -4,6 +4,7 @@ import IntroSection from './components/intro-section'
 import SunRiseSection from './components/sunrise-section'
 import WeekSection from './components/week-section'
 import FlowSection from './components/flow-section'
+import BattleSection from './components/battle-section'
 import './App.css'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -23,7 +24,7 @@ function App() {
       <SunRiseSection/>
       <WeekSection/>
       <FlowSection/>
-      <div className="h-[890px] w-full bg-gray-400"></div>
+      <BattleSection/>
     </div>
   )
 }
