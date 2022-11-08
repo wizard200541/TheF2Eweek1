@@ -169,7 +169,7 @@ const Layer3 = () => {
 
   return (
     <div className="relative">
-      <div className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
+      <div className="relative flex items-end overflow-hidden text-[36px] leading-[36px] mb-[450px]">
         <IntroItem>
           <animated.div
             className="absolute right-0"

@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect } from 'react'
+import { useRef, useLayoutEffect, useState, useEffect } from 'react'
 import { gsap } from "gsap";
 import { ReactComponent as MountainL1 } from '@/assets/mountainL1.svg';
 import { ReactComponent as MountainL2 } from '@/assets/mountainL2.svg';
@@ -7,39 +7,44 @@ import { ReactComponent as MountainL4 } from '@/assets/mountainL4.svg';
 import { ReactComponent as MountainL5 } from '@/assets/mountainL5.svg';
 const SunRiseSection = () => {
   const container = useRef();
+  const [tl, setTl] = useState();
+
   useLayoutEffect(() => {
-    const tl = gsap.timeline({
-      defaults: {
-        ease: "power3.inOut",
-      },
-      scrollTrigger: {
-        trigger: container.current,
-        start: 'top top',
-        end: '+=1000',
-        scrub: true,
-        pin: true,
-      },
-    })
-
-    tl.to('.ml3', { yPercent: 100, duration: 4 })
-    tl.to('.ml2', { yPercent: 100, duration: 4 }, '<0.5')
-    tl.to('.ml1', { yPercent: 50, duration: 4 }, '<0.5')
-    tl.to('.title', { top: "50%", duration: 3 }, '<')
-    tl.to('.title', { color: '#FFF', borderColor: '#FFF', duration: 3, onComplete: () => {
-      tl.to(".subtitle", { opacity: 1 })
-      gsap.fromTo(".subtitle", {text: ''}, {
-        text: 'UI、前端接力合作，一同產出完整作品。',
-        ease: 'none',
-        duration: 3,
-      });
-    } }, '<0.5')
-    tl.to(container.current, { backgroundColor: '#CC4F36' }, '<')
-    tl.to(container.current, { backgroundColor: '#FFB3A4' }, '>')
-
-    return () => {
-      tl.kill();
-    };
-  });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: {
+          ease: "power3.inOut",
+        },
+        scrollTrigger: {
+          trigger: container.current,
+          start: 'top top',
+          end: '+=1000',
+          scrub: true,
+          pin: true,
+        },
+      })
+      setTl(tl);
+    });
+    return () => ctx.revert();
+  }, []);
+  useEffect(() => {
+    if (tl) {
+      tl.to('.ml3', { yPercent: 100, duration: 4 })
+      tl.to('.ml2', { yPercent: 100, duration: 4 }, '<0.5')
+      tl.to('.ml1', { yPercent: 50, duration: 4 }, '<0.5')
+      tl.to('.title', { top: "50%", duration: 3 }, '<')
+      tl.to('.title', { color: '#FFF', borderColor: '#FFF', duration: 3, onComplete: () => {
+        tl.to(".subtitle", { opacity: 1 })
+        gsap.fromTo(".subtitle", {text: ''}, {
+          text: 'UI、前端接力合作，一同產出完整作品。',
+          ease: 'none',
+          duration: 3,
+        });
+      } }, '<0.5')
+      tl.to(container.current, { backgroundColor: '#CC4F36' }, '<')
+      tl.to(container.current, { backgroundColor: '#FFB3A4' }, '>')
+    }
+  }, [tl]);
 
   return (
     <>
@@ -59,7 +64,7 @@ const SunRiseSection = () => {
         <div className="ml5 absolute bottom-0 w-full flex justify-center" ><MountainL5 className="max-w-[1920px] w-full h-auto"/></div>
         <div className="ml4 absolute bottom-0 left-[105px] w-full flex justify-center" ><MountainL4 className="max-w-[1558px] w-full h-auto"/></div>
       </div>
-      <div className="min-h-[1491px] bg-black"></div>
+      <div className="min-h-[491px] bg-black"></div>
     </>
   )
 }

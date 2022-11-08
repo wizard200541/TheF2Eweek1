@@ -46,7 +46,7 @@ const FlowSection = () => {
             end: "bottom center",
           }
         }).add(flagAnimate(elm))
-        .fromTo(elm.querySelector('.title'), { xPercent: 100, autoAlpha: 0, color: '#FFB3A4' }, { xPercent: 0, autoAlpha: 1, ease: "ease.in" })
+        .fromTo(elm.querySelector('.title'), { xPercent: 100, autoAlpha: 0, color: '#FFB3A4' }, { xPercent: 0, autoAlpha: 1, color: '#FFB3A4', ease: "ease.in" })
         .fromTo(elm.querySelector('.content'), { xPercent: 100, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, ease: "ease.in" }, '<0.25')
         if (idx + 1 < flows.current.length) {
           tl.fromTo(dashed.current, {height: (1900 / 3) * idx}, { height: (1900 / 3) * (idx + 1), ease: "none" }, '<')
@@ -67,7 +67,7 @@ const FlowSection = () => {
           <img className="F4 absolute z-20 opacity-0" src={F4}></img>
           <div ref={dashed} className="absolute h-0 w-[5px] left-[85px] overflow-hidden before:contents-[' '] before:absolute before:h-full before:border-l-[10px] before:border-white/50 before:border-dashed"></div>
         </div>
-        <div className="w-[518px] h-full flex flex-col justify-between">
+        <div className="w-[518px] h-full flex flex-col justify-between flex-1">
           <div className="title text-[72px] leading-[84px] text-tertiary">SIGN UP!</div>
           <div className="content text-24px">
             開放報名：<br/>

@@ -44,7 +44,7 @@ const WeekSection = () => {
         scrollTrigger: {
           trigger: panelsContainer.current,
           pin: true,
-          start: "center center",
+          start: "top top",
           scrub: true,
           end: () => "+=" + panelsContainer.current.offsetWidth,
           onUpdate: self => animateTank(self.direction),
