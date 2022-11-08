@@ -1,5 +1,5 @@
 import { useRef, useLayoutEffect } from 'react'
-import { gsap,  } from "gsap";
+import { gsap } from "gsap";
 import { ReactComponent as Week1 } from '@/assets/week1.svg';
 import { ReactComponent as Week2 } from '@/assets/week2.svg';
 import { ReactComponent as Week3 } from '@/assets/week3.svg';
@@ -43,7 +43,7 @@ const WeekSection = () => {
           trigger: panelsContainer.current,
           pin: true,
           start: "center center",
-          scrub: 1,
+          scrub: true,
           end: () => "+=" + panelsContainer.current.offsetWidth,
           onUpdate: self => animateTank(self.direction),
         }

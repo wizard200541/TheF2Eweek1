@@ -1,5 +1,6 @@
-import { useState, forwardRef } from 'react'
+import { useState, forwardRef, useRef, useEffect, useLayoutEffect } from 'react'
 import { useSpring, animated, useSpringRef } from '@react-spring/web';
+import { gsap } from "gsap";
 import { useInView } from 'react-intersection-observer';
 import { ReactComponent as TankDialog } from '@/assets/tank-dialog.svg';
 import { ReactComponent as SeniorSoldier } from '@/assets/senior-soldier.svg';
@@ -23,11 +24,12 @@ const DialogText = (props) => {
   return <div {...props} className={`absolute left-1/2 -translate-x-1/2 top-[25px] text-typing animate-typing text-secondary ${props.className ? props.className : ''}`}/>
 }
 
-const FloatingText = (props) => {
-  return <div {...props} className={`absolute text-white text-stroke whitespace-nowrap z-30 ${props.className ? props.className : ''}`}/>
-}
+const FloatingText = forwardRef((props, ref) => {
+  return <div ref={ref} {...props} className={`absolute text-white text-stroke whitespace-nowrap z-30 ${props.className ? props.className : ''}`}/>
+})
+
 const Layer1 = () => {
-  const { ref: windowRef } = useInView({
+  const { ref: textRef } = useInView({
     onChange: (inView) => {
       if (inView) {
         windowDialogSpringRef.start({ scale: 0, immediate: true });
@@ -56,8 +58,8 @@ const Layer1 = () => {
   })
   return (
     <>
-      <div offset={1} speed={0.2} className="relative flex items-end text-[36px] leading-[36px]">
-        <IntroItem ref={windowRef}>
+      <div className="relative flex items-end text-[36px] leading-[36px]">
+        <IntroItem>
           <animated.div
             className="w-full h-full absolute origin-bottom"
             style={windowSprings}
@@ -76,7 +78,7 @@ const Layer1 = () => {
           </animated.div>
         </IntroItem>
       </div>
-      <div offset={1.8} speed={1.5} className="relative text-[36px] leading-[36px]">
+      <div ref={textRef} className="relative text-[36px] leading-[36px] parallax h-[36px]" data-depth="10">
         <FloatingText className="left-[50%]">羨慕別人的酷酷網頁動畫...</FloatingText>
       </div>
     </>
@@ -84,7 +86,7 @@ const Layer1 = () => {
 }
 
 const Layer2 = () => {
-  const { ref: seniorSoldierRef } = useInView({
+  const { ref: textRef } = useInView({
     onChange: (inView) => {
       if (inView) {
         seniorSoldierDialogSpringRef.start({ scale: 0, immediate: true });
@@ -114,8 +116,8 @@ const Layer2 = () => {
 
   return (
     <>
-      <div offset={2} speed={0.2} className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
-        <IntroItem alignRight ref={seniorSoldierRef}>
+      <div className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
+        <IntroItem alignRight>
           <animated.div
             className="absolute"
             style={seniorSoldierSprings}
@@ -131,7 +133,7 @@ const Layer2 = () => {
           </animated.div>
         </IntroItem>
       </div>
-      <div offset={2.8} speed={1.5} className="relative text-[36px] leading-[36px]">
+      <div ref={textRef} className="relative text-[36px] leading-[36px] parallax h-[36px]" data-depth="10">
         <FloatingText className="right-[50%]">滿足不了同事的許願...</FloatingText>
       </div>
     </>
@@ -139,7 +141,7 @@ const Layer2 = () => {
 }
 
 const Layer3 = () => {
-  const { ref: treeRef } = useInView({
+  const { ref: textRef } = useInView({
     onChange: (inView) => {
       if (inView) {
         juniorSoldierSpringRef.start({ y: 570, x: 150, immediate: true });
@@ -167,8 +169,8 @@ const Layer3 = () => {
 
   return (
     <>
-      <div offset={3} speed={0.2} className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
-        <IntroItem ref={treeRef}>
+      <div className="relative flex items-end overflow-hidden text-[36px] leading-[36px]">
+        <IntroItem>
           <animated.div
             className="absolute right-0"
             style={treeSprings}
@@ -183,7 +185,7 @@ const Layer3 = () => {
           </animated.div>
         </IntroItem>
       </div>
-      <div offset={3.8} speed={1.5} className="relative overflow-hidden text-[36px] leading-[36px]">
+      <div ref={textRef} className="relative text-[36px] leading-[36px] parallax h-[36px]" data-depth="10">
         <FloatingText className="left-[50%]">動畫技能樹太雜無從下手...</FloatingText>
       </div>
     </>
@@ -191,12 +193,42 @@ const Layer3 = () => {
 }
 
 const IntroSection = () => {
+  const container = useRef();
+  const [tl, setTl] = useState();
+  useLayoutEffect(() => {
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        defaults: {
+          ease: "none"
+        },
+        scrollTrigger: {
+          trigger: container.current,
+          start: "top bottom",
+          scrub: true,
+          end: "bottom top",
+        }
+      });
+      setTl(tl);
+    });
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    if (tl) {
+      console.log(container.current.querySelectorAll('.parallax'))
+      container.current.querySelectorAll('.parallax').forEach(layer => {
+        const depth = layer.dataset.depth;
+        const movement = -(layer.offsetHeight * depth)
+        tl.to(layer, {y: movement, ease: ""})
+      });
+    }
+  }, [tl])
   return (
-    <>
+    <div ref={container}>
       <Layer1/>
       <Layer2/>
       <Layer3/>
-    </>
+    </div>
   )
 }
 
