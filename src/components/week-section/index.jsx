@@ -3,7 +3,10 @@ import { gsap } from "gsap";
 import { ReactComponent as Week1 } from '@/assets/week1.svg';
 import { ReactComponent as Week2 } from '@/assets/week2.svg';
 import { ReactComponent as Week3 } from '@/assets/week3.svg';
-import { ReactComponent as F4 } from '@/assets/F4.svg';
+import F1 from '@/assets/F1.svg';
+import F2 from '@/assets/F2.svg';
+import F3 from '@/assets/F3.svg';
+import F4 from '@/assets/F4.svg';
 import tankRightPic from '@/assets/tank-right.gif';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -99,7 +102,7 @@ const WeekSection = () => {
           <div className="text-[36px] leading-[42px] mb-[17px]">視差滾動</div>
           <div className="text-[36px] leading-[42px] mb-[42px]">#板塊設計</div>
           <div className="relative w-full flex justify-center items-end text-[36px] leading-[42px] mb-[43px]">
-            <F4 className="relative left-[-15px] z-20"/>
+            <img className="relative left-[-15px] z-20" src={F4}></img>
             <div className="absolute w-1/2 h-[5px] left-1/2 bottom-[22px] overflow-hidden before:contents-[' '] before:absolute before:w-full before:border-t-[10px] before:border-white/50 before:border-dashed z-10"></div>
           </div>
           <Button>查看關卡細節</Button>
@@ -114,10 +117,10 @@ const WeekSection = () => {
           <div className="text-[36px] leading-[42px] mb-[42px]">#凱鈿行動科技</div>
           <div className="relative w-full flex justify-center items-end text-[36px] leading-[42px] mb-[43px]">
             <div ref={flag1} className="relative w-[141px] h-[229px] left-[-15px]">
-              <img className="F1 absolute z-20" src="src/assets/F1.svg"></img>
-              <img className="F2 absolute z-20 opacity-0" src="src/assets/F2.svg"></img>
-              <img className="F3 absolute z-20 opacity-0" src="src/assets/F3.svg"></img>
-              <img className="F4 absolute z-20 opacity-0" src="src/assets/F4.svg"></img>
+              <img className="F1 absolute z-20" src={F1}></img>
+              <img className="F2 absolute z-20 opacity-0" src={F2}></img>
+              <img className="F3 absolute z-20 opacity-0" src={F3}></img>
+              <img className="F4 absolute z-20 opacity-0" src={F4}></img>
             </div>
             <div className="!visible !opacity-100 absolute w-full h-[5px] left-0 bottom-[22px] overflow-hidden before:contents-[' '] before:absolute before:w-full before:border-t-[10px] before:border-white/50 before:border-dashed z-10"></div>
           </div>
@@ -133,10 +136,10 @@ const WeekSection = () => {
           <div className="text-[36px] leading-[42px] mb-[42px]">#鈦坦科技</div>
           <div className="relative w-full flex justify-center items-end text-[36px] leading-[42px] mb-[43px]">
             <div ref={flag2} className="relative w-[141px] h-[229px] left-[-15px]">
-              <img className="F1 absolute z-20" src="src/assets/F1.svg"></img>
-              <img className="F2 absolute z-20 opacity-0" src="src/assets/F2.svg"></img>
-              <img className="F3 absolute z-20 opacity-0" src="src/assets/F3.svg"></img>
-              <img className="F4 absolute z-20 opacity-0" src="src/assets/F4.svg"></img>
+              <img className="F1 absolute z-20" src={F1}></img>
+              <img className="F2 absolute z-20 opacity-0" src={F2}></img>
+              <img className="F3 absolute z-20 opacity-0" src={F3}></img>
+              <img className="F4 absolute z-20 opacity-0" src={F4}></img>
             </div>
             <div className="!visible !opacity-100 absolute w-1/2 h-[5px] left-0 bottom-[22px] overflow-hidden before:contents-[' '] before:absolute before:w-full before:border-t-[10px] before:border-white/50 before:border-dashed z-10"></div>
           </div>
