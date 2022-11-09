@@ -4,21 +4,7 @@ import F1 from '@/assets/F1.svg';
 import F2 from '@/assets/F2.svg';
 import F3 from '@/assets/F3.svg';
 import F4 from '@/assets/F4.svg';
-
-const Button = ({ children, className, ...rest}) => {
-  return (
-    <button
-      {...rest}
-      className={"relative bg-white text-primary min-w-[307px] h-[65px] flex justify-center items-center text-[36px] " +
-      "before:contents-[' '] before:absolute before:w-0 before:h-full before:bg-tertiary before:left-[-8px] before:top-[-4px] before:skew-y-[45deg] " +
-      "after:contents-[' '] after:absolute after:w-full after:h-0 after:bg-tertiary after:top-[-8px] after:left-[-4px] after:skew-x-[45deg] " +
-      "hover:before:w-2 hover:after:h-2 hover:left-[8px] hover:top-[8px] active:bg-secondary active:before:w-0 active:after:h-0 active:left-0 active:top-0 disabled:bg-[#DCDCDC] disabled:text-white " +
-      className}
-    >
-      {children}
-    </button>
-  )
-}
+import Button from '../button';
 
 const FlowSection = () => {
   const container = useRef();

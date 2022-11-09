@@ -6,6 +6,8 @@ import WeekSection from './components/week-section'
 import FlowSection from './components/flow-section'
 import BattleSection from './components/battle-section'
 import AwardSection from './components/award-section'
+import QASection from './components/qa-section'
+import FirmSection from './components/firm-section'
 import './App.css'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -27,6 +29,8 @@ function App() {
       <FlowSection/>
       <BattleSection/>
       <AwardSection/>
+      <QASection/>
+      <FirmSection/>
     </div>
   )
 }
