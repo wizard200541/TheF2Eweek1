@@ -4,12 +4,7 @@ import Section from '../section'
 import { ReactComponent as BrandLogo } from '@/assets/brand-logo.svg';
 import { ReactComponent as BannerLogo } from '@/assets/banner-logo.svg';
 import { ReactComponent as TankTopIcon } from '@/assets/tank-top.svg';
-
-const Button = ({ children, ...rest}) => {
-  return (
-    <button {...rest} className="bg-white text-primary min-w-[104px] h-[35px] flex justify-center items-center">{children}</button>
-  )
-}
+import Button from '../button';
 
 const ButtonGroup = (props) => {
   return <div className="flex gap-2.5" {...props} />
@@ -104,8 +99,8 @@ const MainSection = () => {
           ]}
         />
         <ButtonGroup>
-          <Button>註冊報名</Button>
-          <Button>登入</Button>
+          <Button className="min-w-[104px] h-[35px] text-[16px]">註冊報名</Button>
+          <Button className="min-w-[104px] h-[35px] text-[16px]">登入</Button>
         </ButtonGroup>
       </Header>
       <animated.div style={springs}>
