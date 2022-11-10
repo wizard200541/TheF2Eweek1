@@ -12,16 +12,25 @@ import './App.css'
 import { gsap } from "gsap";
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
+import { useRef, useLayoutEffect, useState, useEffect } from 'react'
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
 function App() {
-  const isLoading = false;
-  if (isLoading) {
-    return <LoadingPage/>
-  }
+  const [isLoading, setIsLoading] = useState(false);
+
+  // useEffect(()=>{
+  //   document.body.style.overflow = 'hidden';
+  //   setTimeout(() => {
+  //     document.body.style.overflow = 'auto';
+  //     setIsLoading(false)
+  //   }, 3000)
+  // },[])
+
+  console.log(isLoading)
   return (
-    <div className="relative bg-black sm:min-w-[1440px] overflow-x-hidden overflow-y-visible">
+    <div className={`relative bg-black min-w-[768px] overflow-x-hidden overflow-y-visible`} >
+      { isLoading && <LoadingPage/> }
       <MainSection/>
       <IntroSection/>
       <SunRiseSection/>

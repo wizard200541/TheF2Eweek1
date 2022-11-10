@@ -23,6 +23,16 @@ module.exports = {
       secondary: '#3C0C00',
       tertiary: '#FFB3A4',
       lightgrey: '#DCDCDC',
+      yellow: '#FFC612',
+    },
+    fontSize: {
+      h7: ['16px', '24px'],
+      h6: ['24px', '36px'],
+      h5: ['30px', '45px'],
+      h4: ['36px', '54px'],
+      h3: ['42px', '63px'],
+      h2: ['56px', '84px'],
+      h1: ['72px', '108px'],
     },
     extend: {
       animation: {
