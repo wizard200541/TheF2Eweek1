@@ -1,6 +1,7 @@
 import { useRef, useLayoutEffect, useState, useEffect } from 'react'
 import { gsap } from "gsap";
 import Button from "../button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const qaData = [
   {
@@ -116,18 +117,28 @@ const QASection = () => {
             })
           }
         </div>
+        <AnimatePresence exitBeforeEnter>
         <div className="w-[1370px] mb-[170px]">
           {
             qaData[current].qaList.map((qa, idx) => {
               return (
-                <div key={`qa_${idx}`} className="text-[24px] leading-[36px] mb-[80px]">
-                  <div className="text-tertiary">Q：{qa.q}</div>
-                  <div className="text-white">A：{qa.a}</div>
-                </div>
+                <motion.div
+                  key={`qa_${current}-${idx}`}
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -30, opacity: 0 }}
+                  transition={{ duration: 0.3, delay: 0.1 * idx }}
+                >
+                  <div className="text-[24px] leading-[36px] mb-[80px]">
+                    <div className="text-tertiary">Q：{qa.q}</div>
+                    <div className="text-white">A：{qa.a}</div>
+                  </div>
+                </motion.div>
               )
             })
           }
         </div>
+        </AnimatePresence>
         <Button className="min-w-[1370px] h-[140px] text-[72px]" >立即註冊報名</Button>
       </div>
     </div>
