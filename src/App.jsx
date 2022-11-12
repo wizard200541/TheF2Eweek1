@@ -29,7 +29,7 @@ function App() {
 
   console.log(isLoading)
   return (
-    <div className={`relative bg-black min-w-[768px] overflow-x-hidden overflow-y-visible`} >
+    <div className={`relative bg-black overflow-x-hidden overflow-y-visible`} >
       { isLoading && <LoadingPage/> }
       <MainSection/>
       <IntroSection/>

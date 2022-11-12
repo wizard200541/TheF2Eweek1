@@ -36,7 +36,7 @@ const BattleSection = () => {
       const tl2 = gsap.timeline({
         scrollTrigger: {
           trigger: container.current,
-          toggleActions: "restart pause resume pause",
+          toggleActions: "restart none resume none",
           start: 'top top',
         },
       });
@@ -63,7 +63,7 @@ const BattleSection = () => {
       .to('.red', { x: 70 }, '<')
       .to('.blue', { y: 20, x: 30 }, '<0.2')
       .to('.orange', { y: -20, x: 70 }, '<')
-      .to('.purple', { y: -40, x: 70 }, '<0.2')
+      .to('.purple', { y: -25, x: 60 }, '<0.2')
       tl2.fromTo(titles.current.querySelector('.title1'), {text: ''}, {
         text: '區區修煉已經無法滿足了嗎？',
         ease: 'none',
@@ -76,38 +76,26 @@ const BattleSection = () => {
     }
   }, [tl, tl2]);
 
-  const animateTitle = () => {
-    tl2.fromTo(titles.current.querySelector('.title1'), {text: ''}, {
-      text: '區區修煉已經無法滿足了嗎？',
-      ease: 'none',
-      duration: 3,
-    }).fromTo(titles.current.querySelector('.title2'), {text: ''}, {
-      text: '還有比賽等著你！',
-      ease: 'none',
-      duration: 3,
-    });
-  }
-
   return (
     <div ref={container} className="h-[100vh] w-full relative pt-[150px] overflow-hidden">
-      <div ref={titles} className="text-[56px] leading-[84px] text-white w-full absolute bottom-[50%] flex flex-col justify-center items-center">
+      <div ref={titles} className="text-h4 md:text-h2 text-white w-full absolute bottom-[50%] flex flex-col justify-center items-center">
         <div className="title1"></div>
         <div className="title2"></div>
       </div>
       <div ref={e => createBfsRefs(e, 0)} className="absolute bottom-0 w-full">
         <BattleField4 className="w-full h-auto"/>
-        <div className="green absolute w-[50px] top-[0] left-[48%]"><TankGreen className="w-full h-auto"/></div>
+        <div className="green absolute w-[3.5%] top-[0] left-[48%]"><TankGreen className="w-full h-auto"/></div>
       </div>
-      <div ref={e => createBfsRefs(e, 1)} className="absolute bottom-[-100px] w-full flex justify-end">
-        <BattleField3 className="max-w-[1471px] w-full h-auto"/>
-        <div className="orange absolute w-[185px] top-[26%] right-[16%]"><TankOrange className="w-full h-auto"/></div>
-        <div className="purple absolute w-[104px] top-[17%] right-[28%]"><TankPurple className="w-full h-auto"/></div>
-        <div className="red absolute w-[157px] top-[-16%] right-[7%]"><TankRed className="w-full h-auto"/></div>
+      <div ref={e => createBfsRefs(e, 1)} className="absolute bottom-0 w-full flex justify-end">
+        <BattleField3 className="max-w-[1471px] w-[76%] h-auto right-0"/>
+        <div className="orange absolute w-[12%] top-[26%] right-[16%]"><TankOrange className="w-full h-auto"/></div>
+        <div className="purple absolute w-[7.1%] top-[27%] right-[28%]"><TankPurple className="w-full h-auto"/></div>
+        <div className="red absolute w-[5.7%] top-[-11%] right-[7%]"><TankRed className="w-full h-auto"/></div>
       </div>
-      <div ref={e => createBfsRefs(e, 2)} className="absolute bottom-[-70px] w-full">
-        <BattleField2 className="max-w-[1398px] w-full h-auto"/>
-        <div className="yellow absolute w-[277px] top-[0] left-[8%]"><TankYellow className="w-full h-auto"/></div>
-        <div className="blue absolute w-[207px] top-[10%] left-[40%]"><TankBlue className="w-full h-auto"/></div>
+      <div ref={e => createBfsRefs(e, 2)} className="absolute bottom-0 w-full">
+        <BattleField2 className="max-w-[1398px] w-[72%] h-auto left-0"/>
+        <div className="yellow absolute w-[19%] top-[0] left-[8%]"><TankYellow className="w-full h-auto"/></div>
+        <div className="blue absolute w-[14%] top-[24%] left-[40%]"><TankBlue className="w-full h-auto"/></div>
       </div>
       <div ref={e => createBfsRefs(e, 3)} className="absolute bottom-0 w-full"><BattleField1 className="w-full h-auto"/></div>
     </div>

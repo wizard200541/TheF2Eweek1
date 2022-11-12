@@ -105,20 +105,27 @@ const qaData = [
 const QASection = () => {
   const [current, setCurrent] = useState(0)
   return (
-    <div className="w-full min-h-[100vh] bg-black">
-      <div className="w-full h-[140px] bg-primary flex justify-center items-center text-[56px] leading-[65px] text-white">常見問答</div>
-      <div className="flex flex-col items-center mb-[200px]">
-        <div className="h-[225px] flex justify-center items-center gap-5">
+    <div className="w-full min-h-[100vh] bg-black p">
+      <div className="w-full h-[50px] md:h-[140px] bg-primary flex justify-center items-center text-h6 md:text-h2 text-white">常見問答</div>
+      <div className="flex flex-col items-center mb-[200px] px-[25px] md:px-[35px]">
+        <div className="h-[115px] md:h-[225px] flex justify-center items-center gap-2.5 md:gap-5">
           {
             qaData.map((data, idx) => {
               return (
-                <Button key={`qatitle_${idx}`} className="min-w-[328px]" active={current === idx} onClick={() => setCurrent(idx)}>{data.type}</Button>
+                <Button
+                  key={`qatitle_${idx}`}
+                  className="min-w-[171.81px] h-[35px] md:min-w-[328px] md:h-[65px] md:text-h4"
+                  active={current === idx}
+                  onClick={() => setCurrent(idx)}
+                >
+                  {data.type}
+                </Button>
               )
             })
           }
         </div>
         <AnimatePresence exitBeforeEnter>
-        <div className="w-[1370px] mb-[170px]">
+        <div className="mb-[170px]">
           {
             qaData[current].qaList.map((qa, idx) => {
               return (
@@ -129,7 +136,7 @@ const QASection = () => {
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.3, delay: 0.1 * idx }}
                 >
-                  <div className="text-[24px] leading-[36px] mb-[80px]">
+                  <div className="text-h7 md:text-h6 mb-[40px] md:mb-[80px]">
                     <div className="text-tertiary">Q：{qa.q}</div>
                     <div className="text-white">A：{qa.a}</div>
                   </div>
@@ -139,7 +146,13 @@ const QASection = () => {
           }
         </div>
         </AnimatePresence>
-        <Button className="min-w-[1370px] h-[140px] text-[72px]" >立即註冊報名</Button>
+        <Button
+          btnClassName={"w-full max-w-[1370px]"}
+          className={"w-full text-h4 !h-[65px] " +
+          "md:text-h1 md:h-[140px]"}
+        >
+          立即註冊報名
+        </Button>
       </div>
     </div>
   )

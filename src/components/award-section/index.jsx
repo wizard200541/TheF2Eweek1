@@ -1,11 +1,19 @@
 
 
+const AwardListItem = ({ children, remind }) => {
+  return (
+    <div className="relative text-h6 md:text-h4 left-[31px] before:contents-[' '] before:absolute before:h-3 before:w-3 before:bg-white before:left-[-31px] before:top-[17px]">
+      {children}
+      { remind && <div className="absolute text-h7 md:text-h6 text-[#DCDCDC] bottom-[-30px]">{remind}</div>}
+    </div>
+  )
+}
 const AwardSection = () => {
   return (
-    <div className="w-[100vw] min-h-[100vh] bg-black flex flex-col items-center justify-center text-white pt-[138px] pb-[534px]">
-      <div className="min-w-[600px] mb-[223px]">
-        <div className="text-[56px] leading-[65px] mb-[40px] text-tertiary">評審機制</div>
-        <div className="text-[24px] leading-[36px]">
+    <div className="w-[100vw] min-h-[100vh] bg-black flex flex-col items-center justify-center text-white pt-[138px] pb-[202px] md:pb-[534px]">
+      <div className="min-w-[400px] mb-[100px] md:min-w-[600px] md:mb-[223px]">
+        <div className="text-h4 md:text-h2 mb-[40px] text-tertiary">評審機制</div>
+        <div className="text-h7 md:text-h6">
           初選：<br/>
           將由六角學院前端、UI 評審進行第一波篩選，<br/>
           並於 12/5（五）公布初選佳作名單<br/>
@@ -15,24 +23,21 @@ const AwardSection = () => {
           並於 12/23（五）公布企業得獎名單<br/>
         </div>
       </div>
-      <div className="min-w-[600px]">
-        <div className="text-[56px] leading-[65px] mb-[40px] text-tertiary">獎項</div>
-        <div className="text-[24px] leading-[36px] h-[432px] flex flex-col justify-between">
-          <div className="relative text-[36px] leading-[54px] left-[31px] before:contents-[' '] before:absolute before:h-3 before:w-3 before:bg-white before:left-[-31px] before:top-[17px]">
+      <div className="min-w-[400px] md:min-w-[600px]">
+        <div className="text-h4 md:text-h2 mb-[40px] text-tertiary">獎項</div>
+        <div className="h-[392px] md:h-[432px] flex flex-col justify-between">
+          <AwardListItem remind="每週主題個人組十位、團體組十組">
             初選佳作 共六十位 <span className="text-primary">數位獎狀</span>
-            <div className="absolute text-[24px] leading-[36px] text-[#DCDCDC] bottom-[-30px]">每週主題個人組十位、團體組十組</div>
-          </div>
-          <div className="relative text-[36px] leading-[54px] left-[31px] before:contents-[' '] before:absolute before:h-3 before:w-3 before:bg-white before:left-[-31px] before:top-[17px]">
+          </AwardListItem>
+          <AwardListItem remind="每週主題各 2 名，設計 1 位、前端 1 位">
             個人企業獎 共六位 <span className="text-primary">NTD 3,000/位</span>
-            <div className="absolute text-[24px] leading-[36px] text-[#DCDCDC] bottom-[-30px]">每週主題各 2 名，設計 1 位、前端 1 位</div>
-          </div>
-          <div className="relative text-[36px] leading-[54px] left-[31px] before:contents-[' '] before:absolute before:h-3 before:w-3 before:bg-white before:left-[-31px] before:top-[17px]">
+          </AwardListItem>
+          <AwardListItem remind="每週主題各 1 組">
             團體企業獎 共三組 <span className="text-primary">NTD 10,000/組</span>
-            <div className="absolute text-[24px] leading-[36px] text-[#DCDCDC] bottom-[-30px]">每週主題各 1 組</div>
-          </div>
-          <div className="relative text-[36px] leading-[54px] left-[31px] before:contents-[' '] before:absolute before:h-3 before:w-3 before:bg-white before:left-[-31px] before:top-[17px]">
-            以上皆提供完賽數位獎狀
-          </div>
+          </AwardListItem>
+          <AwardListItem>
+          以上皆提供完賽數位獎狀
+          </AwardListItem>
         </div>
       </div>
     </div>

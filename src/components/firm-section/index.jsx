@@ -28,12 +28,12 @@ function removeItem(arr, item) {
 const FirmBlock = ({ title, firmLogos }) => {
   return (
     <div className="mb-[50px] flex flex-col justify-center items-center">
-      <div className="text-h4 sm:text-h1 text-white mb-[50px]">{title}</div>
-      <div className="flex gap-[17px] sm:gap-[36px] md:gap-[31px]">
+      <div className="text-h4 md:text-h1 text-white mb-[50px]">{title}</div>
+      <div className="flex gap-[17px] md:gap-[36px] lg:gap-[31px]">
         {
           firmLogos.map((logo, idx) => {
             return (
-              <div key={`firmlogo_${idx}`} className="w-[202px] h-[202px] sm:w-[432px] sm:h-[432px] md:w-[374px] md:h-[374px] bg-white flex justify-center items-center p-[5%] relative">
+              <div key={`firmlogo_${idx}`} className="w-[202px] h-[202px] md:w-[432px] md:h-[432px] lg:w-[374px] lg:h-[374px] bg-white flex justify-center items-center p-[5%] relative">
                 <div className="z-20 bg-white absolute w-full h-full">
                 </div>
                 {logo}

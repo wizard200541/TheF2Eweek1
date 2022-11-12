@@ -33,7 +33,7 @@ const Header = ({ children }) => {
 const SubHeader = ({ children }) => {
   return (
     <div>
-      <div className="h-[90px] max-w-[1440px] px-[55px] flex justify-between items-center text-[36px] text-white m-auto">
+      <div className="h-[90px] max-w-[1440px] px-[55px] flex justify-between items-center text-h6 md:text-h4 text-white m-auto">
         {children}
       </div>
     </div>
@@ -41,7 +41,7 @@ const SubHeader = ({ children }) => {
 }
 
 const Content = (props) => {
-  return <div {...props} className="flex flex-col items-center text-white text-[36px]" />
+  return <div {...props} className="flex flex-col items-center text-white" />
 }
 
 const TankTop = () => {
@@ -52,7 +52,7 @@ const LoginAction = ({ children, selected, ...rest}) => {
   return (
     <button
       {...rest}
-      className={`leading-[49px] relative text-left ${selected ? 'animate-blink' : ''}`}
+      className={`text-h4 md:text-h3 relative text-left ${selected ? 'animate-blink' : ''}`}
     >
       {selected && <TankTop/>}
       {children}
@@ -110,7 +110,7 @@ const MainSection = () => {
           <div>Hex School</div>
         </SubHeader>
         <Content>
-          <BannerLogo className="my-[89px]"/>
+          <BannerLogo className="my-[89px] h-auto w-[76%]"/>
           <div className="my-[24px] text-[42px] flex flex-col gap-6">
             <LoginAction
               data-action="1"
@@ -127,7 +127,7 @@ const MainSection = () => {
               2&nbsp;SIGN UP
             </LoginAction>
           </div>
-          <div className="my-[79px] leading-[42px]">
+          <div className="my-[79px] text-h6 md:text-h4">
             Interactive And Responsive Web Design.
           </div>
         </Content>
