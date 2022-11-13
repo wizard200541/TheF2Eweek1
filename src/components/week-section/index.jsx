@@ -9,6 +9,7 @@ import F3 from '@/assets/F3.svg';
 import F4 from '@/assets/F4.svg';
 import tankRightPic from '@/assets/tank-right.gif';
 import Button from '../button';
+import { useInView } from 'react-intersection-observer';
 
 const WeekSection = () => {
   const panels = useRef([]);
@@ -19,6 +20,13 @@ const WeekSection = () => {
   const road = useRef();
   const [tl, setTl] = useState();
   const [tankY, setTankY] = useState(0);
+  const { ref } = useInView({
+    onChange: (inView) => {
+      if (inView) {
+        setTankY(panelsContainer?.current?.getBoundingClientRect().bottom - road?.current?.getBoundingClientRect().bottom + 3)
+      }
+    },
+  });
   const createPanelsRefs = (panel, index) => {
     panels.current[index] = panel;
   };
@@ -46,7 +54,6 @@ const WeekSection = () => {
 
   useEffect(() => {
     if (tl) {
-      setTankY(panelsContainer?.current?.getBoundingClientRect().bottom - road?.current?.getBoundingClientRect().bottom + 3)
       const flagAnimate = (el) => gsap.timeline({ defaults: { ease: "power3.inOut" }}).to(el.querySelector('.F1'), { autoAlpha: 0, duration: 0.1 })
       .to(el.querySelector('.F2'), { autoAlpha: 1, duration: 0.1 }, '<')
       .to(el.querySelector('.F2'), { autoAlpha: 0, duration: 0.1 })
@@ -82,7 +89,7 @@ const WeekSection = () => {
       <img ref={tank} src={tankRightPic} width={164} height={66} className="absolute z-50" style={{ bottom: tankY }}/>
       <div ref={(e) => createPanelsRefs(e, 0)} className="relative w-full h-full bg-primary">
         <Week1 className="absolute w-full h-auto top-1/2 -translate-y-1/2 md:top-0 md:translate-y-0 md:h-full md:w-auto"/>
-        <div className="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center text-white">
+        <div ref={ref} className="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center text-white">
           <div className="text-h5 sm:text-h4 md:text-h2 text-tertiary">WEEK 1</div>
           <div className="text-h5 sm:text-h4 md:text-h1 mb-[47px]">The F2E 活動網站設計</div>
           <div className="text-h7 sm:text-h6 md:text-h4 mb-[17px]">視差滾動</div>
