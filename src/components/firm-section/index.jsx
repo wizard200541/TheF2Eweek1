@@ -58,7 +58,7 @@ const FloatingDiamonds = ({ quantity, height, width, size = 'sm', start }) => {
     <AnimatePresence mode={"popLayout"}>
       {items.map((y, idx) => (
         <motion.div
-          layout
+          layout="position"
           key={`${size}-${y}`}
           animate={{
             x: width + 50,
@@ -70,12 +70,7 @@ const FloatingDiamonds = ({ quantity, height, width, size = 'sm', start }) => {
             top: 0,
             zIndex,
           }}
-          onAnimationComplete={() => {
-            const newItems = [...items, getRandom(height, items)];
-            removeItem(newItems, y);
-            setItems(newItems);
-          }}
-          transition={{ ease: "linear", duration: speed, delay: Math.random() * (idx + 5) }}
+          transition={{ ease: "linear", duration: speed, delay: Math.random() * (idx + 10), repeat: Infinity }}
         >
           { size === 'lg' && <Diamondlg /> }
           { size === 'md' && <Diamondmd /> }
