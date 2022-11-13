@@ -16,7 +16,9 @@ const WeekSection = () => {
   const tank = useRef();
   const flag1 = useRef();
   const flag2 = useRef();
+  const road = useRef();
   const [tl, setTl] = useState();
+  const [tankY, setTankY] = useState(0);
   const createPanelsRefs = (panel, index) => {
     panels.current[index] = panel;
   };
@@ -44,6 +46,7 @@ const WeekSection = () => {
 
   useEffect(() => {
     if (tl) {
+      setTankY(panelsContainer?.current?.getBoundingClientRect().bottom - road?.current?.getBoundingClientRect().bottom + 3)
       const flagAnimate = (el) => gsap.timeline({ defaults: { ease: "power3.inOut" }}).to(el.querySelector('.F1'), { autoAlpha: 0, duration: 0.1 })
       .to(el.querySelector('.F2'), { autoAlpha: 1, duration: 0.1 }, '<')
       .to(el.querySelector('.F2'), { autoAlpha: 0, duration: 0.1 })
@@ -74,10 +77,9 @@ const WeekSection = () => {
     }
   }
 
-  console.log(flag1?.current?.getBoundingClientRect())
   return (
     <div ref={panelsContainer} className="w-[300%] h-[100vh] flex flex-nowrap relative overflow-hidden">
-      <img ref={tank} src={tankRightPic} width={164} height={66} className="absolute bottom-[242px] sm:bottom-[220px] md:bottom-[155px] z-50" />
+      <img ref={tank} src={tankRightPic} width={164} height={66} className="absolute z-50" style={{ bottom: tankY }}/>
       <div ref={(e) => createPanelsRefs(e, 0)} className="relative w-full h-full bg-primary">
         <Week1 className="absolute w-full h-auto top-1/2 -translate-y-1/2 md:top-0 md:translate-y-0 md:h-full md:w-auto"/>
         <div className="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center text-white">
@@ -87,7 +89,7 @@ const WeekSection = () => {
           <div className="text-h7 sm:text-h6 md:text-h4 mb-[42px]">#板塊設計</div>
           <div className="relative w-full flex justify-center items-end mb-[80px] md:mb-[43px]">
             <img className="relative left-[-15px] z-20" src={F4}></img>
-            <div className="absolute w-1/2 h-[5px] left-1/2 bottom-[22px] overflow-hidden before:contents-[' '] before:absolute before:w-full before:border-t-[10px] before:border-white/50 before:border-dashed z-10"></div>
+            <div ref={road} className="absolute w-1/2 h-[5px] left-1/2 bottom-[22px] overflow-hidden before:contents-[' '] before:absolute before:w-full before:border-t-[10px] before:border-white/50 before:border-dashed z-10"></div>
           </div>
           <Button className="min-w-[131px] md:text-h4 md:h-[65px] md:min-w-[307px]" onClick={() => window.location = "https://2022.thef2e.com/news/week1"}>查看關卡細節</Button>
         </div>
