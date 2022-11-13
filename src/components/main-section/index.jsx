@@ -24,7 +24,7 @@ const Navigation = ({ navItems }) => {
 const Header = ({ children }) => {
   return (
     <div className=" bg-primary text-secondary">
-      <div className="h-[56px] max-w-[1440px] pr-[35px] flex justify-end items-center gap-[30px] m-auto">
+      <div className="h-[56px] max-w-[1440px] px-[35px] flex justify-between sm:justify-end items-center gap-[30px] m-auto">
         {children}
       </div>
     </div>
@@ -33,7 +33,7 @@ const Header = ({ children }) => {
 const SubHeader = ({ children }) => {
   return (
     <div>
-      <div className="h-[90px] max-w-[1440px] px-[55px] flex justify-between items-center text-h6 md:text-h4 text-white m-auto">
+      <div className="h-[90px] max-w-[1440px] px-[55px] flex justify-between items-center text-h7 sm:text-h6 md:text-h4 text-white m-auto">
         {children}
       </div>
     </div>
@@ -45,14 +45,14 @@ const Content = (props) => {
 }
 
 const TankTop = () => {
-  return <TankTopIcon className="absolute left-[-42px] -translate-x-full"/>
+  return <TankTopIcon className="absolute left-[-14px] sm:left-[-28px] md:left-[-42px] -translate-x-full w-auto h-[36px] sm:h-[54px] md:h-[63px]"/>
 }
 
 const LoginAction = ({ children, selected, ...rest}) => {
   return (
     <button
       {...rest}
-      className={`text-h4 md:text-h3 relative text-left ${selected ? 'animate-blink' : ''}`}
+      className={`text-h6 sm:text-h4 md:text-h3 relative text-left ${selected ? 'animate-blink' : ''}`}
     >
       {selected && <TankTop/>}
       {children}
@@ -62,6 +62,7 @@ const LoginAction = ({ children, selected, ...rest}) => {
 
 const MainSection = () => {
   const [selected, setSelected] = useState(null)
+  const [showNav, setShowNav] = useState(false)
   const springs = useSpring({
     config: {
       duration: 4000,
@@ -82,26 +83,41 @@ const MainSection = () => {
     <Section className="bg-black relative overflow-hidden">
       <Header>
         <BrandLogo/>
-        <Navigation
-          navItems={[
-            {
-              name: '關卡資訊',
-              path: '/',
-            },
-            {
-              name: '攻略資源',
-              path: '/',
-            },
-            {
-              name: '求職專區',
-              path: '/',
-            },
-          ]}
-        />
-        <ButtonGroup>
-          <Button className="min-w-[104px] h-[35px] text-[16px]">註冊報名</Button>
-          <Button className="min-w-[104px] h-[35px] text-[16px]">登入</Button>
-        </ButtonGroup>
+        <div className="hidden sm:flex justify-end items-center gap-[30px]">
+          <Navigation
+            navItems={[
+              {
+                name: '關卡資訊',
+                path: 'https://2022.thef2e.com/news',
+              },
+              {
+                name: '攻略資源',
+                path: 'https://hexschool.tw/OsAcp',
+              },
+              {
+                name: '求職專區',
+                path: 'https://2022.thef2e.com/jobs',
+              },
+            ]}
+          />
+          <ButtonGroup>
+            <Button className="min-w-[104px] h-[35px] text-[16px]" onClick={() => window.location = "https://2022.thef2e.com/"}>註冊報名</Button>
+            <Button className="min-w-[104px] h-[35px] text-[16px]" onClick={() => window.location = "https://2022.thef2e.com/login"}>登入</Button>
+          </ButtonGroup>
+        </div>
+        <div className="relative sm:hidden">
+          <Button className="min-w-[50px]" onClick={() => setShowNav(prev => !prev)}>{showNav ? 'Close' : 'Open'}</Button>
+        </div>
+        {
+          showNav &&
+          <div className="absolute sm:hidden bg-white w-full left-0 top-[56px] text-center flex flex-col">
+            <a href="https://2022.thef2e.com/news" className="py-2 border-lightgrey border-b-[1px]">關卡資訊</a>
+            <a href="https://hexschool.tw/OsAcp" className="py-2 border-lightgrey border-b-[1px]">攻略資源</a>
+            <a href="https://2022.thef2e.com/jobs" className="py-2 border-lightgrey border-b-[1px]">求職專區</a>
+            <a href="https://2022.thef2e.com/" className="py-2 border-lightgrey border-b-[1px]">註冊報名</a>
+            <a href="https://2022.thef2e.com/login" className="py-2">登入</a>
+          </div>
+        }
       </Header>
       <animated.div style={springs}>
         <SubHeader>
@@ -116,6 +132,7 @@ const MainSection = () => {
               data-action="1"
               selected={selected === '1'}
               onMouseEnter={onMouseHover}
+              onClick={() => window.location = "https://2022.thef2e.com/login"}
             >
               1&nbsp;LOG IN
             </LoginAction>
@@ -123,11 +140,12 @@ const MainSection = () => {
               data-action="2"
               selected={selected === '2'}
               onMouseEnter={onMouseHover}
+              onClick={() => window.location = "https://2022.thef2e.com/"}
             >
               2&nbsp;SIGN UP
             </LoginAction>
           </div>
-          <div className="my-[79px] text-h6 md:text-h4">
+          <div className="my-[79px] text-h9 sm:text-h6 md:text-h4">
             Interactive And Responsive Web Design.
           </div>
         </Content>

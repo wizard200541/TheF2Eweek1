@@ -77,28 +77,28 @@ const WeekSection = () => {
   console.log(flag1?.current?.getBoundingClientRect())
   return (
     <div ref={panelsContainer} className="w-[300%] h-[100vh] flex flex-nowrap relative overflow-hidden">
-      <img ref={tank} src={tankRightPic} width={164} height={66} className="absolute bottom-[290px] md:bottom-[225px] z-50" />
+      <img ref={tank} src={tankRightPic} width={164} height={66} className="absolute bottom-[242px] sm:bottom-[220px] md:bottom-[155px] z-50" />
       <div ref={(e) => createPanelsRefs(e, 0)} className="relative w-full h-full bg-primary">
         <Week1 className="absolute w-full h-auto top-1/2 -translate-y-1/2 md:top-0 md:translate-y-0 md:h-full md:w-auto"/>
         <div className="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center text-white">
-          <div className="text-h4 md:text-h2 text-tertiary">WEEK 1</div>
-          <div className="text-h4 md:text-h1 mb-[47px]">The F2E 活動網站設計</div>
-          <div className="text-h6 md:text-h4 mb-[17px]">視差滾動</div>
-          <div className="text-h6 md:text-h4 mb-[42px]">#板塊設計</div>
+          <div className="text-h5 sm:text-h4 md:text-h2 text-tertiary">WEEK 1</div>
+          <div className="text-h5 sm:text-h4 md:text-h1 mb-[47px]">The F2E 活動網站設計</div>
+          <div className="text-h7 sm:text-h6 md:text-h4 mb-[17px]">視差滾動</div>
+          <div className="text-h7 sm:text-h6 md:text-h4 mb-[42px]">#板塊設計</div>
           <div className="relative w-full flex justify-center items-end mb-[80px] md:mb-[43px]">
             <img className="relative left-[-15px] z-20" src={F4}></img>
             <div className="absolute w-1/2 h-[5px] left-1/2 bottom-[22px] overflow-hidden before:contents-[' '] before:absolute before:w-full before:border-t-[10px] before:border-white/50 before:border-dashed z-10"></div>
           </div>
-          <Button className="min-w-[131px] md:text-h4 md:h-[65px] md:min-w-[307px]">查看關卡細節</Button>
+          <Button className="min-w-[131px] md:text-h4 md:h-[65px] md:min-w-[307px]" onClick={() => window.location = "https://2022.thef2e.com/news/week1"}>查看關卡細節</Button>
         </div>
       </div>
       <div ref={(e) => createPanelsRefs(e, 1)} className="relative w-full h-full bg-[#76B9D6]">
-        <Week2 className="absolute w-full h-auto bottom-0 md:h-full md:w-auto"/>
+        <Week2 className="absolute w-full h-auto top-1/2 -translate-y-1/2 md:top-0 md:translate-y-0 md:h-full md:w-auto"/>
         <div className="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center text-white">
-          <div className="text-h4 md:text-h2 text-[#0061A1]">WEEK 2</div>
-          <div className="text-h4 md:text-h1 mb-[47px]">今晚，我想來點點簽</div>
-          <div className="text-h6 md:text-h4 mb-[17px]">canvas</div>
-          <div className="text-h6 md:text-h4 mb-[42px]">#凱鈿行動科技</div>
+          <div className="text-h5 sm:text-h4 md:text-h2 text-[#0061A1]">WEEK 2</div>
+          <div className="text-h5 sm:text-h4 md:text-h1 mb-[47px]">今晚，我想來點點簽</div>
+          <div className="text-h7 sm:text-h6 md:text-h4 mb-[17px]">canvas</div>
+          <div className="text-h7 sm:text-h6 md:text-h4 mb-[42px]">#凱鈿行動科技</div>
           <div className="relative w-full flex justify-center items-end mb-[80px] md:mb-[43px]">
             <div ref={flag1} className="relative w-[141px] h-[229px] left-[-15px]">
               <img className="F1 absolute z-20" src={F1}></img>
@@ -108,16 +108,16 @@ const WeekSection = () => {
             </div>
             <div className="!visible !opacity-100 absolute w-full h-[5px] left-0 bottom-[22px] overflow-hidden before:contents-[' '] before:absolute before:w-full before:border-t-[10px] before:border-white/50 before:border-dashed z-10"></div>
           </div>
-          <Button className="min-w-[131px] md:text-h4 md:h-[65px] md:min-w-[307px]">查看關卡細節</Button>
+          <Button className="min-w-[131px] md:text-h4 md:h-[65px] md:min-w-[307px]" onClick={() => window.location = "https://2022.thef2e.com/news/week2"}>查看關卡細節</Button>
         </div>
       </div>
       <div ref={(e) => createPanelsRefs(e, 2)} className="relative w-full h-full bg-[#215400]">
-        <Week3 className="absolute w-full h-auto bottom-0 md:h-full md:w-auto"/>
+        <Week3 className="absolute w-full h-auto top-1/2 -translate-y-1/2 md:top-0 md:translate-y-0 md:h-full md:w-auto"/>
         <div className="absolute top-0 left-0 h-full w-full flex flex-col justify-center items-center text-white">
-          <div className="text-h4 md:text-h2 text-[#C7FFA3]">WEEK 3</div>
-          <div className="text-h4 md:text-h1 mb-[47px]">Scrum 新手村</div>
-          <div className="text-h6 md:text-h4 mb-[17px]">JS draggable</div>
-          <div className="text-h6 md:text-h4 mb-[42px]">#鈦坦科技</div>
+          <div className="text-h5 sm:text-h4 md:text-h2 text-[#C7FFA3]">WEEK 3</div>
+          <div className="text-h5 sm:text-h4 md:text-h1 mb-[47px]">Scrum 新手村</div>
+          <div className="text-h7 sm:text-h6 md:text-h4 mb-[17px]">JS draggable</div>
+          <div className="text-h7 sm:text-h6 md:text-h4 mb-[42px]">#鈦坦科技</div>
           <div className="relative w-full flex justify-center items-end mb-[80px] md:mb-[43px]">
             <div ref={flag2} className="relative w-[141px] h-[229px] left-[-15px]">
               <img className="F1 absolute z-20" src={F1}></img>
@@ -127,7 +127,7 @@ const WeekSection = () => {
             </div>
             <div className="!visible !opacity-100 absolute w-1/2 h-[5px] left-0 bottom-[22px] overflow-hidden before:contents-[' '] before:absolute before:w-full before:border-t-[10px] before:border-white/50 before:border-dashed z-10"></div>
           </div>
-          <Button className="min-w-[131px] md:text-h4 md:h-[65px] md:min-w-[307px]">查看關卡細節</Button>
+          <Button className="min-w-[131px] md:text-h4 md:h-[65px] md:min-w-[307px]" onClick={() => window.location = "https://2022.thef2e.com/news/week3"}>查看關卡細節</Button>
         </div>
       </div>
     </div>

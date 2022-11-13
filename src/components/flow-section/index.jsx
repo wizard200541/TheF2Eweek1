@@ -8,7 +8,7 @@ import Button from '../button';
 
 const Flag = ({ children }) => {
   return (
-    <div className="relative w-[85px] h-[138px] md:w-[140px] md:h-[229px] mr-[42px] md:mr-[70px]">
+    <div className="relative w-[85px] h-[138px] md:w-[140px] md:h-[229px] mr-[20px] sm:mr-[42px] md:mr-[70px]">
       <img className="F1 absolute z-20" src={F1}></img>
       <img className="F2 absolute z-20 opacity-0" src={F2}></img>
       <img className="F3 absolute z-20 opacity-0" src={F3}></img>
@@ -20,8 +20,8 @@ const Flag = ({ children }) => {
 const FlowItem = ({ children, title }) => {
   return (
     <div className="w-[336px] md:w-[518px] h-full flex flex-col justify-between flex-1">
-      <div className="title text-h4 md:text-h1 text-tertiary">{title}</div>
-      <div className="content text-h7 md:text-h6">
+      <div className="title text-6 sm:text-h4 md:text-h1 text-tertiary">{title}</div>
+      <div className="content text-h9 sm:text-h7 md:text-h6">
         {children}
       </div>
     </div>
@@ -66,7 +66,7 @@ const FlowSection = () => {
 
 
   return (
-    <div ref={container} className="w-full h-[1500px] md:h-[2500px] pt-[200px] pb-[150px] m-auto bg-black flex flex-col justify-between items-center text-white">
+    <div ref={container} className="max-w-[1440px] h-[1500px] md:h-[2500px] pt-[200px] pb-[150px] m-auto bg-black flex flex-col justify-between items-center text-white">
       <div ref={(e) => createFlowsRefs(e, 0)} className="flow relative flex justify-between items-end px-[10%] w-full">
         <Flag>
           <div ref={dashed} className="absolute h-0 w-[5px] left-[60%] overflow-hidden before:contents-[' '] before:absolute before:h-full before:border-l-[10px] before:border-white/50 before:border-dashed"></div>
@@ -77,7 +77,7 @@ const FlowSection = () => {
           <br/>
           截止前可修改報名組別。<br/>
         </FlowItem>
-        <Button className="min-w-[131px] md:min-w-[307px]">點我註冊報名</Button>
+        <div className="absolute right-[10%] bottom-0 translate-y-full sm:relative sm:translate-x-0 sm:translate-y-0"><Button className="min-w-[131px] md:min-w-[307px]" onClick={() => window.location = "https://2022.thef2e.com/"}>點我註冊報名</Button></div>
       </div>
       <div ref={(e) => createFlowsRefs(e, 1)} className="flow relative flex justify-between items-end px-[10%] w-full">
         <Flag/>

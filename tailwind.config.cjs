@@ -33,8 +33,14 @@ module.exports = {
       h5: ['30px', '45px'],
       h6: ['24px', '36px'],
       h7: ['16px', '24px'],
+      h8: ['14px', '21px'],
+      h9: ['12px', '18px'],
     },
     extend: {
+      boxShadow: {
+        'normal': '0px 5px 10px 0px rgba(0, 0, 0, 0.5)',
+        'floating': '0px 10px 20px 2px rgba(0, 0, 0, 0.25)',
+      },
       animation: {
         type: 'type 3s ease-out .8s infinite alternate both',
         typing: 'typing 3.7s steps(10, start) infinite both',

@@ -29,15 +29,15 @@ const FirmBlock = ({ title, firmLogos }) => {
   return (
     <div className="mb-[50px] flex flex-col justify-center items-center">
       <div className="text-h4 md:text-h1 text-white mb-[50px]">{title}</div>
-      <div className="flex gap-[17px] md:gap-[36px] lg:gap-[31px]">
+      <div className="flex flex-col sm:flex-row gap-[17px] md:gap-[36px] lg:gap-[31px]">
         {
           firmLogos.map((logo, idx) => {
             return (
-              <div key={`firmlogo_${idx}`} className="w-[202px] h-[202px] md:w-[432px] md:h-[432px] lg:w-[374px] lg:h-[374px] bg-white flex justify-center items-center p-[5%] relative">
+              <a key={`firmlogo_${idx}`} href={logo.path} target="_blank" className="z-[20] ease-in-out transition-[box-shadow,transform] translate-y-0 shadow-normal hover:-translate-y-2 hover:shadow-floating hover:z-[60] w-[202px] h-[202px] md:w-[432px] md:h-[432px] lg:w-[374px] lg:h-[374px] bg-white flex justify-center items-center p-[5%] relative">
                 <div className="z-20 bg-white absolute w-full h-full">
                 </div>
-                {logo}
-              </div>
+                {logo.logo}
+              </a>
             )
           })
         }
@@ -75,7 +75,7 @@ const FloatingDiamonds = ({ quantity, height, width, size = 'sm', start }) => {
             removeItem(newItems, y);
             setItems(newItems);
           }}
-          transition={{ ease: "linear", duration: speed, delay: Math.random() * (idx + 1) }}
+          transition={{ ease: "linear", duration: speed, delay: Math.random() * (idx + 5) }}
         >
           { size === 'lg' && <Diamondlg /> }
           { size === 'md' && <Diamondmd /> }
@@ -98,17 +98,35 @@ const FirmSection = () => {
       <FirmBlock
         title={<span><span className="text-yellow">鑽石級</span>贊助商</span>}
         firmLogos={[
-          <BlockStudioLogo className="w-full h-auto z-40"/>,
-          <TitanLogo className="w-full h-auto z-40"/>,
-          <KdanLogo className="w-full h-auto z-40"/>,
+          {
+            path: 'https://blockstudio.tw/',
+            logo: <BlockStudioLogo className="w-full h-auto z-40"/>
+          },
+          {
+            path: 'https://titansoft.com/tw',
+            logo: <TitanLogo className="w-full h-auto z-40"/>
+          },
+          {
+            path: 'https://www.kdanmobile.com/zh-tw',
+            logo: <KdanLogo className="w-full h-auto z-40"/>
+          },
         ]}
       />
       <FirmBlock
         title={"共同推廣"}
         firmLogos={[
-          <JiraLogo className="w-full h-auto z-40"/>,
-          <MiroLogo className="w-full h-auto z-40"/>,
-          <DottedSignLogo className="w-full h-auto z-40"/>,
+          {
+            path: 'https://www.atlassian.com/software/jira',
+            logo: <JiraLogo className="w-full h-auto z-40"/>
+          },
+          {
+            path: 'https://miro.com/',
+            logo: <MiroLogo className="w-full h-auto z-40"/>
+          },
+          {
+            path: 'https://www.dottedsign.com/zh-tw/',
+            logo: <DottedSignLogo className="w-full h-auto z-40"/>
+          },
         ]}
       />
       <FloatingDiamonds

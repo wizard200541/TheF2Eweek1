@@ -16,7 +16,7 @@ const Button = ({ children, btnClassName, className, active, ...rest}) => {
           "group-hover:left-[8px] group-hover:top-[8px] " +
           "group-active:bg-secondary group-active:left-0 group-active:top-0 " +
           "group-disabled:bg-[#DCDCDC] group-disabled:text-white " +
-          `${active ? '!bg-secondary before:!w-0 after:!h-0 !left-0 !top-0 ' : ''}` +
+          `${active ? '!bg-secondary ' : ''}` +
           `${className ? className : ''}`}
         >
           {children}

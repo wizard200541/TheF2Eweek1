@@ -108,7 +108,7 @@ const QASection = () => {
     <div className="w-full min-h-[100vh] bg-black p">
       <div className="w-full h-[50px] md:h-[140px] bg-primary flex justify-center items-center text-h6 md:text-h2 text-white">常見問答</div>
       <div className="flex flex-col items-center mb-[200px] px-[25px] md:px-[35px]">
-        <div className="h-[115px] md:h-[225px] flex justify-center items-center gap-2.5 md:gap-5">
+        <div className="sm:h-[115px] md:h-[225px] flex flex-col sm:flex-row justify-center items-center gap-2.5 md:gap-5">
           {
             qaData.map((data, idx) => {
               return (
@@ -149,7 +149,7 @@ const QASection = () => {
         <Button
           btnClassName={"w-full max-w-[1370px]"}
           className={"w-full text-h4 !h-[65px] " +
-          "md:text-h1 md:h-[140px]"}
+          "md:text-h1 md:!h-[140px]"}
         >
           立即註冊報名
         </Button>

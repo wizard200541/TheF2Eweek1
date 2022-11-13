@@ -78,7 +78,7 @@ const BattleSection = () => {
 
   return (
     <div ref={container} className="h-[100vh] w-full relative pt-[150px] overflow-hidden">
-      <div ref={titles} className="text-h4 md:text-h2 text-white w-full absolute bottom-[50%] flex flex-col justify-center items-center">
+      <div ref={titles} className="text-h7 sm:text-h4 md:text-h2 text-white w-full absolute bottom-[50%] flex flex-col justify-center items-center">
         <div className="title1"></div>
         <div className="title2"></div>
       </div>
